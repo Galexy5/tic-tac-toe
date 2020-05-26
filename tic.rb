@@ -56,14 +56,21 @@ class TicTacToe
                 print "You can choose the position you want to mark following this pattern \n"
                 print "1 2 3\n4 5 6\n7 8 9\n "
 
+                print "Player 1 enter your name : "
+                @player1=gets.chomp
+                
+                print "Player 2 enter your name : "
+                @player2=gets.chomp
+                
+                create_players(@player1, @player2)
+
+
         @winner=0
     
         
     end
 
     def create_players(player1,player2)
-        @player1=player1
-        @player2=player2
 
         puts "Player 1 is #{player1} and marks with X"
         puts "Player 2 is #{player2} and marks with O"
@@ -125,23 +132,8 @@ end
 
 game=TicTacToe.new
 
-print "Player 1 enter your name : "
-player1=gets.chomp
-
-print "Player 2 enter your name : "
-player2=gets.chomp
-
-game.create_players(player1, player2)
-
-player1_position=0
-player2_position=0
-
-
-
-
-
 game_is_on=true
-
+answer=0
 
 
 def is_it_over? (b,w,p)
@@ -155,28 +147,32 @@ def is_it_over? (b,w,p)
             if row.include?('-')
              return true
             else
-                return true
+                next
             end
          end
+         puts "It's a draw !!"
+         false
      end
 
 end
 
-answer=0
+player1_position=0
+player2_position=0
+
 while game_is_on do
 
-    start_game
 
-    puts "It's #{game.player1}'s turn..."
+
+    puts "It's #{game.player1.capitalize}'s turn..."
     player1_position=gets.chomp.to_i
-    game.place_choice(player1,player1_position)
+    game.place_choice(game.player1,player1_position)
 
     game_is_on=is_it_over?(game.board,game.check_winner,game.player1)
 
     if game_is_on
-    puts "It's #{game.player2}'s turn..."
+    puts "It's #{game.player2.capitalize}'s turn..."
     player2_position=gets.chomp.to_i
-    game.place_choice(player2,player2_position)
+    game.place_choice(game.player2,player2_position)
 
     game_is_on=is_it_over?(game.board,game.check_winner,game.player2)
     end
