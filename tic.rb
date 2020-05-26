@@ -1,29 +1,28 @@
 module Set_Mark
 
-
 m=""
 
 def set_mark(board,choice,mark)
 
     case choice
     when 1
-    board[0][0]=="-" ? board[0][0]=mark :  m="There is already a mark here"
+    board[0][0]=="-" ? board[0][0]=mark :  m="There is already a mark here...you lose your turn !"
     when 2
-    board[0][1]=="-" ? board[0][1]=mark :  m="There is already a mark here"
+    board[0][1]=="-" ? board[0][1]=mark :  m="There is already a mark here...you lose your turn !"
     when 3
-    board[0][2]=="-" ? board[0][2]=mark :  m="There is already a mark here"
+    board[0][2]=="-" ? board[0][2]=mark :  m="There is already a mark here...you lose your turn !"
     when 4
-    board[1][0]=="-" ? board[1][0]=mark :  m="There is already a mark here"
+    board[1][0]=="-" ? board[1][0]=mark :  m="There is already a mark here...you lose your turn !"
     when 5
-    board[1][1]=="-" ? board[1][1]=mark :  m="There is already a mark here"
+    board[1][1]=="-" ? board[1][1]=mark :  m="There is already a mark here...you lose your turn !"
     when 6
-    board[1][2]=="-" ? board[1][2]=mark :  m="There is already a mark here"
+    board[1][2]=="-" ? board[1][2]=mark :  m="There is already a mark here...you lose your turn !"
     when 7
-    board[2][0]=="-" ? board[2][0]=mark :  m="There is already a mark here"
+    board[2][0]=="-" ? board[2][0]=mark :  m="There is already a mark here...you lose your turn !"
     when 8
-    board[2][1]=="-" ? board[2][1]=mark :  m="There is already a mark here"
+    board[2][1]=="-" ? board[2][1]=mark :  m="There is already a mark here...you lose your turn !"
     when 9
-    board[2][2]=="-" ? board[2][2]=mark :  m="There is already a mark here"
+    board[2][2]=="-" ? board[2][2]=mark :  m="There is already a mark here...you lose your turn !"
     end
 
     puts m
@@ -31,11 +30,8 @@ def set_mark(board,choice,mark)
 
     end
   
-   
 
 end
-
-
 
 
 class TicTacToe
@@ -125,8 +121,6 @@ class TicTacToe
     end
 
 
-
-
 end
 
 
@@ -140,7 +134,7 @@ def is_it_over? (b,w,p)
 
 
      if w==1 || w==2
-        puts "#{p} wins !!"
+        puts "#{p.capitalize} wins !!"
         return false
     else
         b.each do |row| 
@@ -160,8 +154,6 @@ player1_position=0
 player2_position=0
 
 while game_is_on do
-
-
 
     puts "It's #{game.player1.capitalize}'s turn..."
     player1_position=gets.chomp.to_i
@@ -188,7 +180,3 @@ while game_is_on do
   
 
 end
-
-
-
-
