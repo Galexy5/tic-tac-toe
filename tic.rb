@@ -110,8 +110,8 @@ class TicTacToe
             end
         end
     
-        @winner=1 if board[0][0]+board[1][1]+board[2][2]=="XXX"
-        @winner=2 if board[0][2]+board[1][1]+board[2][0]=="OOO"
+        @winner=1 if board[0][0]+board[1][1]+board[2][2]=="XXX" || board[0][2]+board[1][1]+board[2][0]=="XXX"
+        @winner=2 if board[0][0]+board[1][1]+board[2][2]=="OOO" || board[0][2]+board[1][1]+board[2][0]=="OOO"
 
         return @winner
 
@@ -121,6 +121,7 @@ class TicTacToe
 
 
 end
+
 
 game=TicTacToe.new
 
@@ -135,10 +136,36 @@ game.create_players(player1, player2)
 player1_position=0
 player2_position=0
 
+
+
+
+
 game_is_on=true
+
+
+
+def is_it_over? (b,w,p)
+
+
+     if w==1 || w==2
+        puts "#{p} wins !!"
+        return false
+    else
+        b.each do |row| 
+            if row.include?('-')
+             return true
+            else
+                return true
+            end
+         end
+     end
+
+end
+
+answer=0
 while game_is_on do
 
- 
+    start_game
 
     puts "It's #{game.player1}'s turn..."
     player1_position=gets.chomp.to_i
@@ -146,31 +173,26 @@ while game_is_on do
 
     game_is_on=is_it_over?(game.board,game.check_winner,game.player1)
 
+    if game_is_on
     puts "It's #{game.player2}'s turn..."
     player2_position=gets.chomp.to_i
     game.place_choice(player2,player2_position)
 
     game_is_on=is_it_over?(game.board,game.check_winner,game.player2)
-
-
-
-end
-
-def is_it_over? (b,w,p)
-
-    b.each do |row| 
-        if !row.include?('-') 
-         return false
+    end
+ 
+    if !game_is_on
+        puts "You want to start a new game ? y:yes | n:no"
+        answer=gets.chomp.downcase
+        if answer=="y"
+            game_is_on=true
+            game=TicTacToe.new
         end
-     end
-
-     if w!=0
-        puts "#{p} wins !!"
-        return false
-     else
-        return true
-     end
+    end
+  
 
 end
+
+
 
 
