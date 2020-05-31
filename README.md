@@ -1,2 +1,3 @@
 # tic-tac-toe
-tic tac toe game in ruby
+For The Odin Project curriculum
+Tic Tac Toe game in ruby
